@@ -45,7 +45,6 @@ test:
     - pytest-cov
     - pytest-asyncio
     - loguru
-    - blessings
 
 about:
   home: https://github.com/WoLpH/python-utils
