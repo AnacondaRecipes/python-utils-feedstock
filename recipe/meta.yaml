@@ -1,5 +1,5 @@
 {% set name = "python-utils" %}
-{% set version = "3.9.1" %}
+{% set version = "4.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,18 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: eb574b4292415eb230f094cbf50ab5ef36e3579b8f09e9f2ba74af70891449a0
+  sha256: 51d84b297d9877205a76e65f970e3275d1aa9c1cf3d508af2c459247eb4fe701
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true # [py<39]
+  skip: true # [py<310]
 
 requirements:
   host:
     - pip
     - python
-    - wheel
-    - setuptools
+    - uv-build >=0.11,<0.12
   run:
     - python
     - typing_extensions >3.10.0.2
@@ -43,6 +42,7 @@ test:
   requires:
     - pip
     - pytest
+    - pytest-cov
     - pytest-asyncio
     - loguru
 
